@@ -3,13 +3,13 @@
 #include<string.h>
 #include<malloc.h>
 #include "myfile.c"
-typedef struct			//Ïû·Ñ½ÚµãĞÅÏ¢
+typedef struct			//æ¶ˆè´¹èŠ‚ç‚¹ä¿¡æ¯
 	{
-		int adjNode;		//ÁÚ½ÓÍøÂç½Úµã
-		int contain;		//Ïû·Ñ½ÚµãËùĞè´ø¿í
+		int adjNode;		//é‚»æ¥ç½‘ç»œèŠ‚ç‚¹
+		int contain;		//æ¶ˆè´¹èŠ‚ç‚¹æ‰€éœ€å¸¦å®½
 	}costNode;
 void main(){
-	/********»ñÈ¡ÊäÈëÎÄ¼şĞÅÏ¢**********************/
+	/********è·å–è¾“å…¥æ–‡ä»¶ä¿¡æ¯**********************/
 	void d_alg(int v,int **adjList,int n,int costNodeN,costNode *costNodes,int **contain,int **flood);
 	void d_alg2(int v,int **adjList,int n,int costNodeN,costNode *costNodes,int **contain,int **flood);
 	void arr_copy1(int know_array[],int unknow_array[],int dim);
@@ -107,7 +107,7 @@ void main(){
 		}
 		fclose(fp);
 	
-/*****************»ñÈ¡ÊäÈëÎÄ¼şĞÅÏ¢½áÊø*********************/
+/*****************è·å–è¾“å…¥æ–‡ä»¶ä¿¡æ¯ç»“æŸ*********************/
 	for(m = 0; m<ctrNodeN;m++)
 	{
 		for(p = 0; p < costNodeN;p++)
@@ -144,8 +144,8 @@ void main(){
 				for(i = 0; i<ctrNodeN;i++)
 					for(j = 0;j<ctrNodeN;j++)
 						flood[i][j] = 0;
-										//ºÃÔÚÎÄ¼şÖĞ¼ÇÂ¼µÚ¼¸´Î
-				flood[1][1] = p;		//flood[1][1]¼ÇÂ¼½ÚµãÊı£¬flood[ctrNodeN-1][ctrNodeN-1]¼ÇÂ¼ÊÇ·ñÂ·¾¶Òì³£,flood[0][0]¼ÇÂ¼Â·¾¶×î´óÈİÁ¿
+										//å¥½åœ¨æ–‡ä»¶ä¸­è®°å½•ç¬¬å‡ æ¬¡
+				flood[1][1] = p;		//flood[1][1]è®°å½•èŠ‚ç‚¹æ•°ï¼Œflood[ctrNodeN-1][ctrNodeN-1]è®°å½•æ˜¯å¦è·¯å¾„å¼‚å¸¸,flood[0][0]è®°å½•è·¯å¾„æœ€å¤§å®¹é‡
 
 				d_alg(m,bp_adjList,ctrNodeN,costNodeN,costNodes,bp_contain,flood);
 				total_route += flood[0][0];
@@ -343,7 +343,7 @@ void Dispath(int dist[],int path[],int s[],int n,int v,int costNodeN,costNode *c
 			{
 				road[j] = l;
 				/*printf("%d\n",p);*/
-				for(i = 0;i < j;i++)	/*»ñÈ¡Â·¾¶×î´óÍ¨Á¿*/
+				for(i = 0;i < j;i++)	/*è·å–è·¯å¾„æœ€å¤§é€šé‡*/
 					if(contain[road[i]][road[i+1]] < maxRoute)
 						maxRoute = contain[(road[i])][road[i+1]];
 				road_pr = costNodes[p].contain*minCost;
@@ -423,7 +423,7 @@ void Dispath2(int dist[],int path[],int s[],int n,int v,int costNodeN,costNode *
 			{
 				road[j] = l;
 				/*printf("%d\n",p);*/
-				for(i = 0;i < j;i++)	/*»ñÈ¡Â·¾¶×î´óÍ¨Á¿*/
+				for(i = 0;i < j;i++)	/*è·å–è·¯å¾„æœ€å¤§é€šé‡*/
 					if(contain[road[i]][road[i+1]] < maxRoute)
 						maxRoute = contain[(road[i])][road[i+1]];
 				road_pr = costNodes[p].contain*minCost;
